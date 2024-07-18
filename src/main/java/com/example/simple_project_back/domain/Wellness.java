@@ -19,17 +19,12 @@ public class Wellness {
     private int theme;
     private String title;
     private long favoriteCnt;
-    private double hard;
-    private double rati;
 
-    public Wellness(int location, int theme, String title, double rati, double hard) {
+    public Wellness(int location, int theme, String title) {
         this.location = location;
         this.theme = theme;
         this.title = title;
         this.favoriteCnt = 0;
-        this.rati = rati;
-        this.hard = hard;
-
     }
 
 

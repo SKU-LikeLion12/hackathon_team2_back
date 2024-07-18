@@ -26,15 +26,15 @@ public class Member {
     @Setter
     private String nickName;
     @Setter
-    private String email;
+    private String eMail;
 
     private long isOwner;
 
-    public Member(String userID, String password, String nickName, String email) {
+    public Member(String userID, String password, String nickName, String eMail) {
         this.userId = userID;
         this.setPassword(password);
         this.nickName = nickName;
-        this.email = email;
+        this.eMail = eMail;
         this.isOwner = 0;
     }
 
