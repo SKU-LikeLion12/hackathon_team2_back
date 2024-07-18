@@ -14,26 +14,26 @@ import lombok.Setter;
 @Entity
 public class Wellness {
     @Id@GeneratedValue
-    private long id;
-    private String location;
-    private String thema;
-    private String title;
-    private double lati;
-    private double hard;
+    private long Id;
+    private String Location;
+    private String Thema;
+    private String Title;
+    private double Lati;
+    private double Hard;
 
     public Wellness(String location, String thema, String title) {
-        this.location = location;
-        this.thema = thema;
-        this.title = title;
-        this.lati = getLati();
-        this.hard = getHard();
+        this.Location = location;
+        this.Thema = thema;
+        this.Title = title;
+        this.Lati = getLati();
+        this.Hard = getHard();
     }
     public void update(String thema, String title) {
-        this.thema = thema;
-        this.title = title;
+        this.Thema = thema;
+        this.Title = title;
     }
     @Setter
     @Column(name = "favorite_count")
-    private Long favoriteCount = 0L;
+    private Long FavoriteCount = 0L;
 
 }
