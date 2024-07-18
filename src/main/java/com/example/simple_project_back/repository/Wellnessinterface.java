@@ -1,10 +1,13 @@
 package com.example.simple_project_back.repository;
 
+
 import com.example.simple_project_back.domain.Wellness;
 
 import java.util.List;
 
 public interface WellnessInterface {
+
+    public Wellness FindById(Long wellness);
 
     public Wellness SaveWellness(Wellness wellness);
 
@@ -16,7 +19,8 @@ public interface WellnessInterface {
 
     public Wellness FindByTitle(String title);
 
-    List<Wellness> FindByFavorite(String favoriteCnt);
+    public Wellness FindByFavorite(Long favoriteCnt);
 
     List<Wellness> FindAllWellness();
 }
+

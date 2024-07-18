@@ -18,20 +18,13 @@ public class Wellness {
     private String Location;
     private String Thema;
     private String Title;
-    private double Lati;
-    private double Hard;
 
     public Wellness(String location, String thema, String title) {
         this.Location = location;
         this.Thema = thema;
         this.Title = title;
-        this.Lati = getLati();
-        this.Hard = getHard();
     }
-    public void update(String thema, String title) {
-        this.Thema = thema;
-        this.Title = title;
-    }
+
     @Setter
     @Column(name = "favorite_count")
     private Long FavoriteCount = 0L;

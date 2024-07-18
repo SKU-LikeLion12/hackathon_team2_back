@@ -16,6 +16,11 @@ public class WellnessRepository implements WellnessInterface{
     private final EntityManager em;
 
     @Override
+    public Wellness FindById(Long WellnessId) {
+        return em.find(Wellness.class, WellnessId);
+    }
+
+    @Override
     public Wellness SaveWellness(Wellness wellness) {
         em.persist(wellness);
         return wellness;
@@ -26,6 +31,7 @@ public class WellnessRepository implements WellnessInterface{
         em.remove(wellness);
     }
 
+    @Override
     public Wellness FindByLocation(String location) {
         return em.createQuery("select w from Wellness w where w.Location = :l", Wellness.class)
                 .setParameter("l", location).getSingleResult();
@@ -44,9 +50,9 @@ public class WellnessRepository implements WellnessInterface{
     }
 
     @Override
-    public List<Wellness> FindByFavorite(String favoriteCnt) {
+    public Wellness FindByFavorite(Long favoriteCnt) {
         return em.createQuery("select w from Wellness w where w.FavoriteCount = :fc",Wellness.class)
-                .setParameter("fc", favoriteCnt).getResultList();
+                .setParameter("fc", favoriteCnt).getSingleResult();
     }
 
     @Override
