@@ -25,7 +25,7 @@ public class Wellness {
         this.Title = title;
     }
 
-    @Setter
+
     @Column(name = "favorite_count")
     private Long FavoriteCount = 0L;
 
