@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
+@Service
 public class JwtUtility {
     private String secret = "yourSecretKey";
 
