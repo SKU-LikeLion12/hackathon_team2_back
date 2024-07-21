@@ -9,8 +9,47 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 @NoArgsConstructor
 @Getter
 @Entity
 public class Member {
+
+    @Id @GeneratedValue
+    private Long id;
+
+    @Column(unique = true)
+    private String userId;
+
+    private String password;
+    @Setter
+    private String nickName;
+    @Setter
+    private String eMail;
+
+    private Long isOwner;
+
+    public Member(String userID, String password, String nickName, String eMail) {
+        this.userId = userID;
+        this.setPassword(password);
+        this.nickName = nickName;
+        this.eMail = eMail;
+        this.isOwner = 0L;
+    }
+
+
+    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
+    public void setPassword(String password){
+        this.password = passwordEncoder.encode(password);
+    }
+
+
+    public boolean checkPassword(String password){
+        return passwordEncoder.matches(password, this.password);
+    }
+
 }

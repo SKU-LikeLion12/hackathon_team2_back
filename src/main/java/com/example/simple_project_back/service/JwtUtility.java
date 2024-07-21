@@ -3,6 +3,7 @@ import io.jsonwebtoken.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
+@Service
 public class JwtUtility {
     private String secret = "yourSecretKey";
 
@@ -17,7 +18,6 @@ public class JwtUtility {
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, secret.getBytes(StandardCharsets.UTF_8))
                 .compact();
-
     }
 
 

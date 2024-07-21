@@ -1,32 +1,30 @@
 package com.example.simple_project_back.domain;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-// 위도,경도(double)
-@NoArgsConstructor
+
 @Getter
 @Entity
+@NoArgsConstructor
 public class Wellness {
-    @Id@GeneratedValue
-    private long Id;
-    private String Location;
-    private String Thema;
-    private String Title;
+    @Id @GeneratedValue
+    private Long id;
 
-    public Wellness(String location, String thema, String title) {
-        this.Location = location;
-        this.Thema = thema;
-        this.Title = title;
+    private int location;
+    private int theme;
+    private String title;
+    private long favoriteCnt;
+
+    public Wellness(int location, int theme, String title) {
+        this.location = location;
+        this.theme = theme;
+        this.title = title;
+        this.favoriteCnt = 0;
     }
-
-
-    @Column(name = "favorite_count")
-    private Long FavoriteCount = 0L;
 
 }

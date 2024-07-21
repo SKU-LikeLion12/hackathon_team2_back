@@ -1,33 +1,31 @@
 package com.example.simple_project_back.DTO;
 
 import com.example.simple_project_back.domain.Wellness;
-import jakarta.persistence.Column;
 import lombok.Data;
 
 public class WellnessDTO {
-    @Data
-    public static class WellnessResponse {
-        private long WellnessId;
-        private String Location;
-        private String Thema;
-        private String Title;
-        private long FavoriteCnt;
 
-        public WellnessResponse(Wellness wellness) {
-            this.WellnessId = wellness.getId();
-            this.Location = wellness.getLocation();
-            this.Thema = wellness.getThema();
-            this.Title = wellness.getTitle();
-            this.FavoriteCnt = wellness.getFavoriteCount();
+    @Data
+    public static class ResponseWellness{
+        private Long wellness_id;
+        private String title;
+        private int location;
+        private int theme;
+
+
+        public ResponseWellness(Wellness wellness){
+            this.wellness_id = wellness.getId();
+            this.title = wellness.getTitle();
+            this.location = wellness.getLocation();
+            this.theme = wellness.getTheme();
         }
+
     }
 
-    @Data
-    public static class WellnessRequest {
-        private long WellnessId;
-        private String Location;
-        private String Thema;
-        private String Title;
-        private long FavoriteCnt;
-    }
+
+
+
+
+
+
 }
