@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Wellness {
     @Id @GeneratedValue
-    private long id;
+    private Long id;
 
     private int location;
     private int theme;
@@ -26,6 +26,5 @@ public class Wellness {
         this.title = title;
         this.favoriteCnt = 0;
     }
-
 
 }

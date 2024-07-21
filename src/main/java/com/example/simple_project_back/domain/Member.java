@@ -5,9 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -17,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Member {
 
     @Id @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column(unique = true)
     private String userId;
@@ -28,14 +26,14 @@ public class Member {
     @Setter
     private String eMail;
 
-    private long isOwner;
+    private Long isOwner;
 
     public Member(String userID, String password, String nickName, String eMail) {
         this.userId = userID;
         this.setPassword(password);
         this.nickName = nickName;
         this.eMail = eMail;
-        this.isOwner = 0;
+        this.isOwner = 0L;
     }
 
 

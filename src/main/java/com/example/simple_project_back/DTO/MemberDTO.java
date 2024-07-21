@@ -19,7 +19,7 @@ public class MemberDTO {
         @Schema(description = "닉네임", example = "test_nickname")
         private String nickName;
         @Schema(description = "이메일", example = "test_eMail")
-        private String eMail;
+        private String eleMail;
     }
 
 

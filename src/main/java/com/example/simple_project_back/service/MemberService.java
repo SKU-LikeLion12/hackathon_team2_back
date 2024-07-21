@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class MemberService {
     private final MemberRepository memberRepository;
     private final JwtUtility jwtUtility;
+
 
     @Transactional
     public Member signUp(MemberDTO.signUpRequest request){
@@ -21,14 +22,14 @@ public class MemberService {
         if (member != null){ // 이미 있음
             return null;
         }
-        return memberRepository.save(new Member(request.getUserId(), request.getPassword(), request.getNickName(), request.getEMail()));
+        return memberRepository.save(new Member(request.getUserId(), request.getPassword(), request.getNickName(), request.getEleMail()));
     }
 
 
     @Transactional
     public String login(String userId, String password) {
         Member member = memberRepository.findByUserId(userId);
-        if (member == null && member.checkPassword(password)) {
+        if (member != null && member.checkPassword(password)) {
             return jwtUtility.generateToken(member.getUserId());
         }
         return null;
@@ -36,7 +37,6 @@ public class MemberService {
 
     public Member tokenToMember(String token){
         return memberRepository.findByUserId(jwtUtility.validateToken(token).getSubject());
-
     }
 
 }
