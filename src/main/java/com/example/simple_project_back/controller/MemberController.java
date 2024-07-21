@@ -20,7 +20,7 @@ public class MemberController {
 
         Member member = memberService.signUp(request);
         if(member == null) {
-            return new MemberDTO.LoginResponse( "fail", -1L);
+            return new MemberDTO.LoginResponse( "fail", -1);
         }
         return memberService.login(request.getUserId(), request.getPassword());
     }
@@ -30,9 +30,18 @@ public class MemberController {
         try{
             return memberService.login(request.getUserId(), request.getPassword());
         }catch (Exception e) {
-            return new MemberDTO.LoginResponse( "fail", -1L);
+            return new MemberDTO.LoginResponse( "fail", -1);
         }
     }
 
+
+    @PostMapping("/member/SignUpOwnerRequest")
+    public ResponseEntity<String> signUpOwner(@RequestBody MemberDTO.SignUpOwnerRequest request) {
+        Member member = memberService.signUpOwner(request);
+        if(member == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("fail");
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body("success");
+    }
 
 }

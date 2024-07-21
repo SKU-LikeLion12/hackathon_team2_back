@@ -7,9 +7,9 @@ public class MemberDTO {
     @Data
     public static class LoginResponse {
         private String token;
-        private Long isOwner;
+        private int isOwner;
 
-        public LoginResponse(String token, Long isOwner) {
+        public LoginResponse(String token, int isOwner) {
             this.token = token;
             this.isOwner = isOwner;
         }
@@ -31,6 +31,22 @@ public class MemberDTO {
         private String nickName;
         @Schema(description = "이메일", example = "test_eMail")
         private String eleMail;
+    }
+
+
+    @Data
+    public static class SignUpOwnerRequest {
+        @Schema(description = "아이디", example = "test_id")
+        private String userId;
+        @Schema(description = "비밀번호", example = "test_pwd")
+        private String password;
+        @Schema(description = "닉네임", example = "test_nickname")
+        private String nickName;
+        @Schema(description = "이메일", example = "test_eleMail")
+        private String eleMail;
+        @Schema(description = "이메일", example = "test_eMail")
+        private Long managerId;
+
     }
 
 
