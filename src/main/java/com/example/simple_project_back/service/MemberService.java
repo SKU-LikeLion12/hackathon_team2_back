@@ -27,10 +27,10 @@ public class MemberService {
 
 
     @Transactional
-    public String login(String userId, String password) {
+    public MemberDTO.LoginResponse login(String userId, String password) {
         Member member = memberRepository.findByUserId(userId);
         if (member != null && member.checkPassword(password)) {
-            return jwtUtility.generateToken(member.getUserId());
+            return new MemberDTO.LoginResponse(  jwtUtility.generateToken(member.getUserId()) ,  member.getIsOwner() );
         }
         return null;
     }

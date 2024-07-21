@@ -5,6 +5,17 @@ import lombok.Data;
 
 public class MemberDTO {
     @Data
+    public static class LoginResponse {
+        private String token;
+        private Long isOwner;
+
+        public LoginResponse(String token, Long isOwner) {
+            this.token = token;
+            this.isOwner = isOwner;
+        }
+    }
+
+    @Data
     public static class LoginRequest{
         private String userId;
         private String password;

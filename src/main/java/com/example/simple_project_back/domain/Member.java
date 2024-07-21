@@ -49,4 +49,8 @@ public class Member {
         return passwordEncoder.matches(password, this.password);
     }
 
+
+    public Long getIsOwner(){
+        return this.isOwner;
+    }
 }
