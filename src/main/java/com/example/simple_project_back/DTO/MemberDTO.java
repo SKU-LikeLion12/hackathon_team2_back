@@ -11,7 +11,7 @@ public class MemberDTO {
     }
 
     @Data
-    public static class signUpRequest {
+    public static class SignUpRequest {
         @Schema(description = "아이디", example = "test_id")
         private String userId;
         @Schema(description = "비밀번호", example = "test_pwd")

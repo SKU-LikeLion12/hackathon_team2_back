@@ -17,7 +17,7 @@ public class MemberService {
 
 
     @Transactional
-    public Member signUp(MemberDTO.signUpRequest request){
+    public Member signUp(MemberDTO.SignUpRequest request){
         Member member = memberRepository.findByUserId(request.getUserId());
         if (member != null){ // 이미 있음
             return null;

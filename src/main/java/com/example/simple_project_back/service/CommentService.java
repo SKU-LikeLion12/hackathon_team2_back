@@ -1,7 +1,9 @@
 package com.example.simple_project_back.service;
 
 
+import com.example.simple_project_back.DTO.CommentDTO;
 import com.example.simple_project_back.domain.Comment;
+import com.example.simple_project_back.domain.Member;
 import com.example.simple_project_back.domain.Wellness;
 import com.example.simple_project_back.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ import java.util.List;
 public class CommentService {
     private final CommentRepository commentRepository;
     private final WellnessService wellnessService;
+    private final MemberService memberService;
 
 
     public List<Comment> getComment(Long wellnessId) {
@@ -27,5 +30,22 @@ public class CommentService {
         return commentRepository.findAllById(wellness);
     }
 
+    @Transactional
+    public int addComment(CommentDTO.CommentRequest request) {
+
+        try {
+
+
+            Member member = memberService.tokenToMember(request.getToken());
+            Wellness wellness = wellnessService.getWellnessById(request.getWellnessId());
+
+            return commentRepository.addComment(new Comment(member, wellness, request.getContent()  ));
+
+        }catch (Exception e){
+            return 0;
+        }
+
+
+    }
 
 }

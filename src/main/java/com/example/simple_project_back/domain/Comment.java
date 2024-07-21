@@ -23,6 +23,7 @@ public class Comment {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Wellness wellness;
 
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     public Comment(Member member, Wellness wellness, String content) {

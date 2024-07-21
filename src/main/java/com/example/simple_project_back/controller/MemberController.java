@@ -16,10 +16,8 @@ public class MemberController {
 
 
     @PostMapping("/member/signUp")
-    public ResponseEntity<String> signUp(@RequestBody MemberDTO.signUpRequest request) {
+    public ResponseEntity<String> signUp(@RequestBody MemberDTO.SignUpRequest request) {
 
-
-        System.out.println(request.getEleMail() + "ddsdsdsdsds");
         Member member = memberService.signUp(request);
         if(member == null) {
             String message = "이미 존재하는 회원입니다.";

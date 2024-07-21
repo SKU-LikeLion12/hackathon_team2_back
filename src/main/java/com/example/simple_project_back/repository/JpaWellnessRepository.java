@@ -27,7 +27,19 @@ public class JpaWellnessRepository implements WellnessRepository {
                     .setParameter("wellnessId", wellnessId).getSingleResult();
 
         }catch (NoResultException e){
+
             return null;
+        }
+    }
+
+
+    @Override
+    public int addWellness(Wellness wellness) {
+        try{
+            em.persist(wellness);
+            return 1;
+        }catch (Exception e){
+            return 0;
         }
     }
 }

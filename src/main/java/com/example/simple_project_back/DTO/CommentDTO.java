@@ -6,18 +6,25 @@ import lombok.Data;
 
 public class CommentDTO {
     @Data
-    public static class commentResponse {
+    public static class CommentResponse {
 
         private String content;
         private String author;
         private String authorId;
 
-        public commentResponse(Comment comment) {
+        public CommentResponse(Comment comment) {
             this.content = comment.getContent();
             this.author = comment.getMember().getNickName();
             this.authorId = comment.getMember().getUserId();
 
         }
+    }
+
+    @Data
+    public static class CommentRequest {
+        private String token;
+        private Long wellnessId;
+        private String content;
     }
 
 
