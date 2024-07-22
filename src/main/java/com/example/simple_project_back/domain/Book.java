@@ -6,11 +6,14 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Entity
 @NoArgsConstructor
-public class Comment {
-    @Id @GeneratedValue
+public class Book {
+    @Id
+    @GeneratedValue
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,10 +29,23 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    public Comment(Member member, Wellness wellness, String content) {
+    private int headCnt;
+
+    @Column(columnDefinition = "DATETIME")
+    private LocalDateTime checkIn;
+    @Column(columnDefinition = "DATETIME")
+    private LocalDateTime inTime;
+
+    private int isBook;
+
+    public Book(Member member, Wellness wellness, String content ,int headCnt, LocalDateTime checkIn, LocalDateTime inTime) {
         this.member = member;
         this.wellness = wellness;
         this.content = content;
+        this.headCnt = headCnt;
+        this.checkIn = checkIn;
+        this.inTime = inTime;
+        isBook = 0;
     }
 
 }

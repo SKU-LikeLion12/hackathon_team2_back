@@ -6,14 +6,14 @@ import lombok.Data;
 public class WellnessDTO {
 
     @Data
-    public static class ResponseWellness{
+    public static class WellnessResponse{
         private Long wellness_id;
         private String title;
         private int location;
         private int theme;
 
 
-        public ResponseWellness(Wellness wellness){
+        public WellnessResponse(Wellness wellness){
             this.wellness_id = wellness.getId();
             this.title = wellness.getTitle();
             this.location = wellness.getLocation();
@@ -22,10 +22,11 @@ public class WellnessDTO {
 
     }
 
-
-
-
-
-
+    @Data
+    public static class WellnessRequest{
+        private int location;
+        private int theme;
+        private String title;
+    }
 
 }

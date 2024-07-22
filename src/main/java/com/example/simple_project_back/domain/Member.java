@@ -1,11 +1,10 @@
 package com.example.simple_project_back.domain;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -26,14 +25,31 @@ public class Member {
     @Setter
     private String eMail;
 
-    private Long isOwner;
+    private int isOwner;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "managerId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Wellness wellness;
+
 
     public Member(String userID, String password, String nickName, String eMail) {
         this.userId = userID;
         this.setPassword(password);
         this.nickName = nickName;
         this.eMail = eMail;
-        this.isOwner = 0L;
+        this.isOwner = 0;
+        this.wellness = null;
+    }
+
+
+    public Member(String userID, String password, String nickName, String eMail, int isOwner, Wellness wellness) {
+        this.userId = userID;
+        this.setPassword(password);
+        this.nickName = nickName;
+        this.eMail = eMail;
+        this.isOwner = isOwner;
+        this.wellness = wellness;
     }
 
 
@@ -49,4 +65,8 @@ public class Member {
         return passwordEncoder.matches(password, this.password);
     }
 
+
+    public int getIsOwner(){
+        return this.isOwner;
+    }
 }

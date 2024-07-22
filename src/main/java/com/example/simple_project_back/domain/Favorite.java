@@ -9,7 +9,8 @@ import org.hibernate.annotations.OnDeleteAction;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Comment {
+public class Favorite {
+
     @Id @GeneratedValue
     private Long id;
 
@@ -23,13 +24,10 @@ public class Comment {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Wellness wellness;
 
-    @Column(columnDefinition = "TEXT")
-    private String content;
 
-    public Comment(Member member, Wellness wellness, String content) {
+    public Favorite(Member member, Wellness wellness) {
         this.member = member;
         this.wellness = wellness;
-        this.content = content;
     }
 
 }
