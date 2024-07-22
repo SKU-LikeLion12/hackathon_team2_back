@@ -16,30 +16,32 @@ public class MemberController {
 
 
     @PostMapping("/member/signUp")
-    public ResponseEntity<String> signUp(@RequestBody MemberDTO.signUpRequest request) {
+    public MemberDTO.LoginResponse signUp(@RequestBody MemberDTO.SignUpRequest request) {
 
-
-        System.out.println(request.getEleMail() + "ddsdsdsdsds");
         Member member = memberService.signUp(request);
         if(member == null) {
-            String message = "이미 존재하는 회원입니다.";
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+            return new MemberDTO.LoginResponse( "fail", -1);
         }
-        String token = memberService.login(request.getUserId(), request.getPassword());
-        return ResponseEntity.status(HttpStatus.CREATED).body(token);
+        return memberService.login(request.getUserId(), request.getPassword());
     }
 
     @PostMapping("/member/login")
-    public ResponseEntity<String>  login(@RequestBody MemberDTO.LoginRequest request) {
-        String token = memberService.login(request.getUserId(), request.getPassword());
-        if (token == null) {
-            String message = "잘못된 로그인입니다.";
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+    public  MemberDTO.LoginResponse login(@RequestBody MemberDTO.LoginRequest request) {
+        try{
+            return memberService.login(request.getUserId(), request.getPassword());
+        }catch (Exception e) {
+            return new MemberDTO.LoginResponse( "fail", -1);
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(token);
     }
 
 
-
+    @PostMapping("/member/SignUpOwnerRequest")
+    public ResponseEntity<String> signUpOwner(@RequestBody MemberDTO.SignUpOwnerRequest request) {
+        Member member = memberService.signUpOwner(request);
+        if(member == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("fail");
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body("success");
+    }
 
 }

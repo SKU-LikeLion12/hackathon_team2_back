@@ -1,6 +1,7 @@
 package com.example.simple_project_back.service;
 
 
+import com.example.simple_project_back.DTO.WellnessDTO;
 import com.example.simple_project_back.domain.Wellness;
 import com.example.simple_project_back.repository.WellnessRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,14 @@ public class WellnessService {
     public Wellness getWellnessById(Long wellnessId){
         return wellnessRepository.findWellnessById(wellnessId);
     }
+
+
+    @Transactional
+    public int setWellness(WellnessDTO.WellnessRequest request){
+        return wellnessRepository.addWellness(new Wellness(request.getLocation(), request.getTheme(), request.getTitle()) );
+
+
+    }
+
 
 }
