@@ -1,5 +1,7 @@
 package com.example.simple_project_back.service;
 import io.jsonwebtoken.*;
+import org.springframework.stereotype.Service;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
