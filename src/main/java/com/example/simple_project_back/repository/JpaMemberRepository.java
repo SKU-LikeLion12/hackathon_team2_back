@@ -12,12 +12,14 @@ import org.springframework.stereotype.Repository;
 public class JpaMemberRepository implements MemberRepository{
     private final EntityManager em;
 
+    // 회원가입 회원 저장
     @Override
     public Member save(Member member) {
         em.persist(member);
         return member;
     }
 
+    // 로그인 사용자 ID찾기
     @Override
     public Member findByUserId(String userId) {
         try{

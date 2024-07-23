@@ -15,6 +15,7 @@ public class MemberController {
     private final MemberService memberService;
 
 
+    // 회원가입 컨트롤러
     @PostMapping("/member/signUp")
     public MemberDTO.LoginResponse signUp(@RequestBody MemberDTO.SignUpRequest request) {
 
@@ -25,6 +26,7 @@ public class MemberController {
         return memberService.login(request.getUserId(), request.getPassword());
     }
 
+    // 로그인 컨트롤러
     @PostMapping("/member/login")
     public  MemberDTO.LoginResponse login(@RequestBody MemberDTO.LoginRequest request) {
         try{
@@ -35,6 +37,7 @@ public class MemberController {
     }
 
 
+    // 사장 회원가입 컨트롤러
     @PostMapping("/member/SignUpOwnerRequest")
     public ResponseEntity<String> signUpOwner(@RequestBody MemberDTO.SignUpOwnerRequest request) {
         Member member = memberService.signUpOwner(request);
@@ -43,5 +46,5 @@ public class MemberController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body("success");
     }
-
+    //Post, Get, Put, Delet
 }

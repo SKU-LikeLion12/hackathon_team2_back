@@ -33,6 +33,7 @@ public class Member {
     private Wellness wellness;
 
 
+    // ?
     public Member(String userID, String password, String nickName, String eMail) {
         this.userId = userID;
         this.setPassword(password);
@@ -43,6 +44,7 @@ public class Member {
     }
 
 
+    // 회원가입 시 테이블에 들어갈 정보들의 틀
     public Member(String userID, String password, String nickName, String eMail, int isOwner, Wellness wellness) {
         this.userId = userID;
         this.setPassword(password);
