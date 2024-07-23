@@ -1,10 +1,8 @@
 package com.example.simple_project_back.controller;
 
 
-import com.example.simple_project_back.DTO.FavoriteDTO;
 import com.example.simple_project_back.DTO.ScrapDTO;
 import com.example.simple_project_back.DTO.WellnessDTO;
-import com.example.simple_project_back.domain.Favorite;
 import com.example.simple_project_back.domain.Scrap;
 import com.example.simple_project_back.service.ScrapService;
 import lombok.RequiredArgsConstructor;

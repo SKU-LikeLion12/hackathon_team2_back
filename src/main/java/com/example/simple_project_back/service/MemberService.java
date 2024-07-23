@@ -48,7 +48,7 @@ public class MemberService {
     public Member signUpOwner(MemberDTO.SignUpOwnerRequest request){
         Member member = memberRepository.findByUserId(request.getUserId());
         Wellness wellness = wellnessService.getWellnessById(request.getManagerId());
-        if (member != null){ // 이미 있음
+        if (member != null || wellness == null ){ // 이미 있음
             return null;
         }
         return memberRepository.save(new Member(request.getUserId(), request.getPassword(), request.getNickName(), request.getEleMail() , 1 , wellness ));
