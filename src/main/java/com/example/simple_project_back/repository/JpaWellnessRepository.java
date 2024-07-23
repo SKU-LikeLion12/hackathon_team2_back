@@ -34,12 +34,12 @@ public class JpaWellnessRepository implements WellnessRepository {
 
 
     @Override
-    public int addWellness(Wellness wellness) {
+    public Wellness addWellness(Wellness wellness) {
         try{
             em.persist(wellness);
-            return 1;
+            return wellness;
         }catch (Exception e){
-            return 0;
+            return null;
         }
     }
 
