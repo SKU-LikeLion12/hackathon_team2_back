@@ -18,13 +18,13 @@ public class Wellness {
     private int location;
     private int theme;
     private String title;
-    private long favoriteCnt;
+    private Long favoriteCnt;
 
     public Wellness(int location, int theme, String title) {
         this.location = location;
         this.theme = theme;
         this.title = title;
-        this.favoriteCnt = 0;
+        this.favoriteCnt = 0L;
     }
 
 }

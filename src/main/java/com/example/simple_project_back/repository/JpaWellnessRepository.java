@@ -42,4 +42,12 @@ public class JpaWellnessRepository implements WellnessRepository {
             return 0;
         }
     }
+
+    @Override
+    public void updateFavoriteCnt(Wellness wellness, Long delta) {
+        em.createQuery("UPDATE Wellness w SET w.favoriteCnt = w.favoriteCnt + :delta WHERE w.id = :wellnessId")
+                .setParameter("delta", delta)
+                .setParameter("wellnessId", wellness.getId())
+                .executeUpdate();
+    }
 }
