@@ -9,7 +9,7 @@ import java.util.List;
 public interface FavoriteRepository {
     
     // 좋아요
-    int addFavorite(Favorite favorite);
+    int toggleFavorite(Favorite favorite);
 
     // 마이페이지 > 스크랩(좋아요) 기능
     List<Favorite> findAllById(Member member);

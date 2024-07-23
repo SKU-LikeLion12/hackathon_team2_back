@@ -15,7 +15,7 @@ public class JpaFavoriteRepository implements FavoriteRepository {
     private final EntityManager em;
 
     @Override
-    public int addFavorite(Favorite favorite) {
+    public int toggleFavorite(Favorite favorite) {
         try{
 
             em.remove(
