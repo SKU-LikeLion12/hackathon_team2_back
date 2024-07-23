@@ -26,7 +26,15 @@ public class FavoriteService {
         try {
             Member member = memberService.tokenToMember(request.getToken());
             Wellness wellness = wellnessService.getWellnessById(request.getWellnessId());
-            return favoriteRepository.addFavorite(new Favorite(member, wellness));
+
+            if (favoriteRepository.toggleFavorite(new Favorite(member, wellness)) == 1){
+                wellnessService.updateFavoriteCnt( wellness, 1L); // 생성되었다는 것은 +1을 해줘야 한다는 것
+                return 1;
+            }else{
+                wellnessService.updateFavoriteCnt( wellness, -1L);
+                return 0;
+            }
+
             // 삭제 0, 추가 1, 오류 2
         }catch (Exception e){
             return 2;

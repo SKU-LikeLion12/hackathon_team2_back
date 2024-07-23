@@ -29,9 +29,14 @@ public class WellnessService {
     @Transactional
     public int setWellness(WellnessDTO.WellnessRequest request){
         return wellnessRepository.addWellness(new Wellness(request.getLocation(), request.getTheme(), request.getTitle()) );
-
-
     }
+
+
+    @Transactional
+    public void updateFavoriteCnt(Wellness wellness, Long delta){
+        wellnessRepository.updateFavoriteCnt(wellness, delta);
+    }
+
 
 
 }
