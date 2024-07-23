@@ -5,6 +5,7 @@ import com.example.simple_project_back.DTO.ScrapDTO;
 import com.example.simple_project_back.DTO.WellnessDTO;
 import com.example.simple_project_back.domain.Scrap;
 import com.example.simple_project_back.service.ScrapService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ScrapController {
     private final ScrapService scrapService;
 
+    @Operation(summary = "스크랩하기", description = "사용자가 원하는 매장 스크랩 하기", tags = {"Member"})
     @PostMapping("/scrap/add")
     public ResponseEntity<String> addScrap(@RequestBody ScrapDTO.ScrapRequest request){
         try{
@@ -34,6 +36,7 @@ public class ScrapController {
     }
 
 
+    @Operation(summary = "사용자가 스크랩한 매장들 보기", description = "사용자가 스크랩한 매장 불러오기", tags = {"Member"})
     @GetMapping("/scrap/myPage")
     public List<WellnessDTO.WellnessResponse> getScrapMyPage(@RequestBody ScrapDTO.ScrapMemberRequest request){
         List<WellnessDTO.WellnessResponse> responses = new ArrayList<>();

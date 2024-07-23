@@ -28,8 +28,6 @@ public class MemberService {
     }
 
 
-
-
     @Transactional
     public MemberDTO.LoginResponse login(String userId, String password) {
         Member member = memberRepository.findByUserId(userId);
