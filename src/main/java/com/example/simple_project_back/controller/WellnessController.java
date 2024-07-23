@@ -7,10 +7,7 @@ import com.example.simple_project_back.service.WellnessService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +25,17 @@ public class WellnessController {
         }
         return response;
     }
+
+    @GetMapping("/themePage/{themeId}")
+    public List<WellnessDTO.WellnessResponse> themePage(@PathVariable Long themeId){
+        List<WellnessDTO.WellnessResponse> response = new ArrayList<>();
+        for( Wellness w : wellnessService.getWellnessByTheme(themeId) ){
+            response.add(new WellnessDTO.WellnessResponse(w));
+        }
+        return response;
+    }
+
+
 
 
     @PostMapping("/wellness/add")

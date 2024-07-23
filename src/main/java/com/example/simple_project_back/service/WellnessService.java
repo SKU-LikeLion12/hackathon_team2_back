@@ -23,6 +23,12 @@ public class WellnessService {
         return wellnessRepository.findWellnessAll();
     }
 
+
+    public List<Wellness> getWellnessByTheme(Long themeId){
+        return wellnessRepository.findWellnessByTheme(themeId);
+    }
+
+
     public Wellness getWellnessById(Long wellnessId){
         return wellnessRepository.findWellnessById(wellnessId);
     }

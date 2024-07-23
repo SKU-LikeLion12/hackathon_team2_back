@@ -20,6 +20,14 @@ public class JpaWellnessRepository implements WellnessRepository {
                 .getResultList();
     }
 
+
+    @Override
+    public List<Wellness> findWellnessByTheme(Long themeId) {
+        return  em.createQuery("select w from Wellness w  where w.theme = :themeId order by w.favoriteCnt", Wellness.class)
+                .setParameter("themeId", themeId)
+                .getResultList();
+    }
+
     @Override
     public Wellness findWellnessById(Long wellnessId) {
         try{

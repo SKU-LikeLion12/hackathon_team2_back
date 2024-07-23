@@ -8,7 +8,10 @@ public interface WellnessRepository {
 
     // 메인페이지
     List<Wellness> findWellnessAll();
-    
+
+    // 테마 페이지
+    List<Wellness> findWellnessByTheme(Long themeId);
+
     // 상세페이지 댓글 가져오기에 필요함
     Wellness findWellnessById(Long wellnessId);
 
