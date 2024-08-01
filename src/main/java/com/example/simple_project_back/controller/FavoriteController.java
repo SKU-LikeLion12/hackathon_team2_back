@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = { "*" })
 public class FavoriteController {
     private final FavoriteService favoriteService;
 

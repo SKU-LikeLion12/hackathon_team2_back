@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = { "*" })
 public class ScrapController {
     private final ScrapService scrapService;
 
