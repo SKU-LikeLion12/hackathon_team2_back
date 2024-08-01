@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = { "*" })
 public class CommentController {
     private final CommentService commentService;
     private final View error;
