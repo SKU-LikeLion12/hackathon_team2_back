@@ -18,7 +18,6 @@ public class MemberService {
     private final WellnessService wellnessService;
 
 
-    // 회원가입 기능
     @Transactional
     public Member signUp(MemberDTO.SignUpRequest request){
         Member member = memberRepository.findByUserId(request.getUserId());
@@ -29,9 +28,6 @@ public class MemberService {
     }
 
 
-
-
-    // 로그인 기능
     @Transactional
     public MemberDTO.LoginResponse login(String userId, String password) {
         Member member = memberRepository.findByUserId(userId);
@@ -46,12 +42,11 @@ public class MemberService {
     }
 
 
-    // 회원가입 사장 기능
     @Transactional
     public Member signUpOwner(MemberDTO.SignUpOwnerRequest request){
         Member member = memberRepository.findByUserId(request.getUserId());
         Wellness wellness = wellnessService.getWellnessById(request.getManagerId());
-        if (member != null){ // 이미 있음
+        if (member != null || wellness == null ){ // 이미 있음
             return null;
         }
         return memberRepository.save(new Member(request.getUserId(), request.getPassword(), request.getNickName(), request.getEleMail() , 1 , wellness ));

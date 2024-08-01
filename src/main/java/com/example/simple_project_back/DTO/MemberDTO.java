@@ -20,7 +20,9 @@ public class MemberDTO {
     // 로그인 사용자 요청시 필요한 데이터
     @Data
     public static class LoginRequest{
+        @Schema(description = "아이디", example = "test_id")
         private String userId;
+        @Schema(description = "비밀번호", example = "test_pwd")
         private String password;
     }
 

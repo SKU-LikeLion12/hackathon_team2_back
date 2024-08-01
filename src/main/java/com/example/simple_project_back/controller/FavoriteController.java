@@ -6,6 +6,7 @@ import com.example.simple_project_back.DTO.WellnessDTO;
 import com.example.simple_project_back.domain.Favorite;
 import com.example.simple_project_back.domain.Wellness;
 import com.example.simple_project_back.service.FavoriteService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.List;
 public class FavoriteController {
     private final FavoriteService favoriteService;
 
+    @Operation(summary = "즐겨찾기", description = "사용자별 즐겨찾기 기능", tags = {"Member"})
     @PostMapping("/favorite/add")
     public ResponseEntity<String> addFavorite(@RequestBody FavoriteDTO.FavoriteRequest request) {
 
@@ -34,7 +36,7 @@ public class FavoriteController {
 
     }
 
-
+    @Operation(summary = "사용자 즐겨찾기 목록 보기", description = "사용자별 즐겨찾기 목록", tags = {"Member"})
     @GetMapping("/favorite/myPage")
     public List<WellnessDTO.WellnessResponse> getFavoriteMyPage(@RequestBody FavoriteDTO.FavoriteMemberRequest request){
         List<WellnessDTO.WellnessResponse> responses = new ArrayList<>();

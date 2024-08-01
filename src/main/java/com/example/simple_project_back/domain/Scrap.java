@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-@Entity
 @Getter
+@Entity
 @NoArgsConstructor
 public class Scrap {
 
@@ -30,4 +30,5 @@ public class Scrap {
         this.member = member;
         this.wellness = wellness;
     }
+
 }

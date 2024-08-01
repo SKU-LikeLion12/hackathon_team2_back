@@ -22,11 +22,20 @@ public class WellnessDTO {
 
     }
 
+
     @Data
     public static class WellnessRequest{
         private int location;
         private int theme;
         private String title;
+        // --------------------------> title은 둘 다 중복되어 사용한다.
+        String introduce;
+        String hp;
+        String address;
+        String url;
+        String workTime;
+        double lati;
+        double hard;
     }
 
 }
