@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = { "*" })
 public class WellnessController {
     private final WellnessService wellnessService;
 
