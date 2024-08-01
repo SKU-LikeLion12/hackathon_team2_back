@@ -16,6 +16,8 @@ public class MemberController {
     private final MemberService memberService;
 
 
+
+
     @Operation(summary = "회원가입", description = "회원가입 후 로그인", tags={"Basic"})
     @PostMapping("/member/signUp")
     public MemberDTO.LoginResponse signUp(@RequestBody MemberDTO.SignUpRequest request) {
