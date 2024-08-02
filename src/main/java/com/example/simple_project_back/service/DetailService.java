@@ -26,8 +26,8 @@ public class DetailService {
     }
 
 
-    public Detail getDetail(DetailDTO.DetailGetRequest request){
-        return detailRepository.findDetailById(request.getWellnessId());
+    public Detail getDetail(Long wellnessId){
+        return detailRepository.findDetailById(wellnessId);
     }
 
 

@@ -34,7 +34,7 @@ public class BookController {
     }
 
     @Operation(summary = "예약정보 확인", description = "일반사용자,사장님 사용자 모두 예약내용 확인 가능", tags = {"Member", "Owner"})
-    @GetMapping("/book/myPage")
+    @PostMapping("/book/myPage")
     public List<BookDTO.BookResponseCommon> getMyPage(@RequestBody BookDTO.BookRequestIsOwner request){
         List<BookDTO.BookResponseCommon> response = new ArrayList<>();
         try{

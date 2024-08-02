@@ -34,7 +34,7 @@ public class ScrapController {
 
 
     @Operation(summary = "사용자가 스크랩한 매장들 보기", description = "사용자가 스크랩한 매장 불러오기", tags = {"Member"})
-    @GetMapping("/scrap/myPage")
+    @PostMapping("/scrap/myPage")
     public List<WellnessDTO.WellnessResponse> getScrapMyPage(@RequestBody ScrapDTO.ScrapMemberRequest request){
         List<WellnessDTO.WellnessResponse> responses = new ArrayList<>();
         for( Scrap s : scrapService.getScrapByUserId( request)){

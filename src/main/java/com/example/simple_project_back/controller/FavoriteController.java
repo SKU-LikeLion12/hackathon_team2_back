@@ -37,7 +37,7 @@ public class FavoriteController {
     }
 
     @Operation(summary = "사용자 즐겨찾기 목록 보기", description = "사용자별 즐겨찾기 목록", tags = {"Member"})
-    @GetMapping("/favorite/myPage")
+    @PostMapping("/favorite/myPage")
     public List<WellnessDTO.WellnessResponse> getFavoriteMyPage(@RequestBody FavoriteDTO.FavoriteMemberRequest request){
         List<WellnessDTO.WellnessResponse> responses = new ArrayList<>();
         for(Favorite f : favoriteService.getFavoriteByUserId( request)){
