@@ -59,6 +59,7 @@ public class BookDTO {
         private String title;
         private String nickName;
         private LocalDateTime checkIn;
+        private String eleMail;
         private String content;
         private int isBook;
 
@@ -67,6 +68,7 @@ public class BookDTO {
             this.title = book.getWellness().getTitle();
             this.nickName = book.getMember().getNickName();
             this.checkIn = book.getCheckIn();
+            this.eleMail = book.getMember().getEMail();
             this.content = book.getContent();
             this.isBook = book.getIsBook();
         }
