@@ -20,7 +20,6 @@ public class JpaScrapRepository implements ScrapRepository {
     @Override
     public int toggleScrap(Scrap scrap) {
         try{
-
             em.remove(
                     em.createQuery("select s from Scrap s where s.member = :member and s.wellness = :wellness", Scrap.class )
                             .setParameter("member", scrap.getMember())

@@ -29,7 +29,7 @@ public class ScrapController {
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error");
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("fail");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("delete");
     }
 
 
