@@ -29,7 +29,8 @@ public class BookController {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("fail");
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error");
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error");
         }
     }
 
