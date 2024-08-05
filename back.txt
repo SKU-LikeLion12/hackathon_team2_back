@@ -1,16 +1,19 @@
 server {
-    listen 443 ssl;
-    server_name teamnback.sku-sku.com;
-
-    ssl_certificate /etc/letsencrypt/live/teamnback.sku-sku.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/teamnback.sku-sku.com/privkey.pem;
-
+    server_name team2back.sku-sku.com;
+    listen 80;
     location / {
+        include proxy_params;
         proxy_pass http://localhost:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 90;
+    }
+}
+
+server {
+    server_name team2back.sku-sku.com;
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/team2back.sku-sku.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/team2back.sku-sku.com/privkey.pem;
+    location / {
+        include proxy_params;
+        proxy_pass http://localhost:8080;
     }
 }

@@ -17,13 +17,12 @@ public class MemberController {
 
 
 
-
     @Operation(summary = "회원가입", description = "회원가입 후 로그인", tags={"Basic"})
     @PostMapping("/member/signUp")
     public MemberDTO.LoginResponse signUp(@RequestBody MemberDTO.SignUpRequest request) {
         Member member = memberService.signUp(request);
         if(member == null) {
-            return new MemberDTO.LoginResponse( "fail", -1);
+            return new MemberDTO.LoginResponse( "fail", 0, "fail");
         }
         return memberService.login(request.getUserId(), request.getPassword());
     }
@@ -34,7 +33,7 @@ public class MemberController {
         try{
             return memberService.login(request.getUserId(), request.getPassword());
         }catch (Exception e) {
-            return new MemberDTO.LoginResponse( "fail", -1);
+            return new MemberDTO.LoginResponse( "fail", -1, "fail");
         }
     }
 

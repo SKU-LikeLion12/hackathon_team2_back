@@ -32,7 +32,7 @@ public class MemberService {
     public MemberDTO.LoginResponse login(String userId, String password) {
         Member member = memberRepository.findByUserId(userId);
         if (member != null && member.checkPassword(password)) {
-            return new MemberDTO.LoginResponse(  jwtUtility.generateToken(member.getUserId()) ,  member.getIsOwner() );
+            return new MemberDTO.LoginResponse(  jwtUtility.generateToken(member.getUserId()) ,  member.getIsOwner(), member.getNickName() );
         }
         return null;
     }

@@ -6,12 +6,14 @@ import lombok.Data;
 public class MemberDTO {
     @Data
     public static class LoginResponse {
+        private String nickName;
         private String token;
         private int isOwner;
 
-        public LoginResponse(String token, int isOwner) {
+        public LoginResponse(String token, int isOwner, String nickName) {
             this.token = token;
             this.isOwner = isOwner;
+            this.nickName = nickName;
         }
     }
 
