@@ -57,6 +57,11 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("fail");
     }
 
+    @Operation(summary = "예약정보 확인(해당 예약번호로)", description = "사용자가 예약내용 확인 후", tags = {"Owner", "Member"})
+    @GetMapping("/book/get/{bookId}")
+    public BookDTO.BookResponseById isBookRequest( @RequestParam Long bookId){
+        return new BookDTO.BookResponseById( bookService.bookById(bookId) );
+    }
 
 }
 

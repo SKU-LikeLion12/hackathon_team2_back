@@ -20,4 +20,7 @@ public interface BookRepository {
     
     // 사장님 예약 확인
     int updateIsBook(Long id, int isBook);
+
+    // 예약 정보 확인
+    Book findAllById(Long id);
 }

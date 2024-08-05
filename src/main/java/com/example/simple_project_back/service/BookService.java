@@ -72,5 +72,10 @@ public class BookService {
 
 
 
+    @Transactional
+    public Book bookById( Long bookId) {
+        return bookRepository.findAllById(bookId);
 
+
+    }
 }

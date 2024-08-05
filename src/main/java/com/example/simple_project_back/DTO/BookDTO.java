@@ -51,4 +51,25 @@ public class BookDTO {
         }
     }
 
+
+
+    @Data
+    public static class BookResponseById{
+        private Long bookId;
+        private String title;
+        private String nickName;
+        private LocalDateTime checkIn;
+        private String content;
+        private int isBook;
+
+        public BookResponseById(Book book){
+            this.bookId = book.getId();
+            this.title = book.getWellness().getTitle();
+            this.nickName = book.getMember().getNickName();
+            this.checkIn = book.getCheckIn();
+            this.content = book.getContent();
+            this.isBook = book.getIsBook();
+        }
+    }
+
 }

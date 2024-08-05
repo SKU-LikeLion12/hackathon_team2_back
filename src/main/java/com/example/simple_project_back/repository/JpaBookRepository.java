@@ -5,6 +5,7 @@ import com.example.simple_project_back.domain.Book;
 import com.example.simple_project_back.domain.Member;
 import com.example.simple_project_back.domain.Wellness;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -51,6 +52,19 @@ public class JpaBookRepository implements BookRepository {
         }catch(Exception e){
             return 0;
         }
+    }
 
+
+    @Override
+    public Book findAllById(Long id) {
+        try{
+            return em.createQuery("select b from Book b where b.id = :id", Book.class)
+                    .setParameter("id",id)
+                    .getSingleResult();
+
+        }catch(NoResultException e){
+            return null;
+
+        }
     }
 }
