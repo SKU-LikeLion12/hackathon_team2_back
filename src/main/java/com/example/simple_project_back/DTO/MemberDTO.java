@@ -48,7 +48,7 @@ public class MemberDTO {
         private String nickName;
         @Schema(description = "이메일", example = "test_eleMail")
         private String eleMail;
-        @Schema(description = "이메일", example = "test_eMail")
+        @Schema(description = "매장id", example = "test_eMail")
         private Long managerId;
 
     }

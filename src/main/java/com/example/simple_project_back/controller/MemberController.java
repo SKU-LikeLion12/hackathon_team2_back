@@ -27,7 +27,7 @@ public class MemberController {
         return memberService.login(request.getUserId(), request.getPassword());
     }
 
-    @Operation(summary = "일반사용자로그인", description = "로그인 기능", tags = {"Basic"})
+    @Operation(summary = "사용자로그인", description = "로그인 기능", tags = {"Basic"})
     @PostMapping("/member/login")
     public  MemberDTO.LoginResponse login(@RequestBody MemberDTO.LoginRequest request) {
         try{
@@ -38,7 +38,7 @@ public class MemberController {
     }
 
 
-    @Operation(summary = "사장님로그인", description = "사장님로그인 기능", tags = {"Owner"})
+    @Operation(summary = "사장님 회원가입", description = "사장님회원가입 기능", tags = {"Owner"})
     @PostMapping("/member/SignUpOwnerRequest")
     public ResponseEntity<String> signUpOwner(@RequestBody MemberDTO.SignUpOwnerRequest request) {
         Member member = memberService.signUpOwner(request);
