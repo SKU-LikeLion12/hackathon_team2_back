@@ -48,4 +48,15 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.CREATED).body("success");
     }
 
+
+    @Operation(summary = "중복체크", description = "중복체크 기능 사용자가 있으면 1 없으면 0을 리턴", tags = {"Basic"})
+    @PostMapping("/member/OverLapRequest")
+    public ResponseEntity<Integer> overLap(@RequestBody MemberDTO.OverLapRequest request) {
+        Member member = memberService.overLap(request);
+        if(member == null) {
+            return ResponseEntity.status(HttpStatus.OK).body(0);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(1);
+    }
+
 }

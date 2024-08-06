@@ -52,4 +52,10 @@ public class MemberService {
         return memberRepository.save(new Member(request.getUserId(), request.getPassword(), request.getNickName(), request.getEleMail() , 1 , wellness ));
     }
 
+
+    public Member overLap(MemberDTO.OverLapRequest request){
+        return memberRepository.findByUserId(request.getUserId());
+    }
+
+
 }

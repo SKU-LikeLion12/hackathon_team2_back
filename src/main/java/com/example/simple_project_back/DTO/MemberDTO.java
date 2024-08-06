@@ -53,5 +53,11 @@ public class MemberDTO {
 
     }
 
+    @Data
+    public static class OverLapRequest{
+        @Schema(description = "아이디", example = "test_id")
+        private String userId;
+    }
+
 
 }
