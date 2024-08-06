@@ -4,6 +4,7 @@ import com.example.simple_project_back.domain.Book;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BookDTO {
 
@@ -40,13 +41,15 @@ public class BookDTO {
     public static class BookResponseCommon{
         private Long bookId;
         private String title;
-        private LocalDateTime checkIn;
+        private String checkIn;
         private int isBook;
 
         public BookResponseCommon(Book book){
             this.bookId = book.getId();
             this.title = book.getWellness().getTitle();
-            this.checkIn = book.getCheckIn();
+            // LocalDateTime을 "yyyy-MM-dd HH:mm" 형식으로 변환
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            this.checkIn = book.getCheckIn().format(formatter);
             this.isBook = book.getIsBook();
         }
     }
