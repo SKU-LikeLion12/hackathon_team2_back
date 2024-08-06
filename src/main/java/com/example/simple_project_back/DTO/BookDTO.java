@@ -41,14 +41,11 @@ public class BookDTO {
     public static class BookResponseCommon{
         private Long bookId;
         private String title;
-        private int headCnt;
         private String checkIn;
         private int isBook;
-
         public BookResponseCommon(Book book){
             this.bookId = book.getId();
             this.title = book.getWellness().getTitle();
-            this.headCnt = book.getHeadCnt();
             // LocalDateTime을 "yyyy-MM-dd HH:mm" 형식으로 변환
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             this.checkIn = book.getCheckIn().format(formatter);
@@ -63,6 +60,7 @@ public class BookDTO {
         private Long bookId;
         private String title;
         private String nickName;
+        private int headCnt;
         private LocalDateTime checkIn;
         private String eleMail;
         private String content;
@@ -72,6 +70,7 @@ public class BookDTO {
             this.bookId = book.getId();
             this.title = book.getWellness().getTitle();
             this.nickName = book.getMember().getNickName();
+            this.headCnt = book.getHeadCnt();
             this.checkIn = book.getCheckIn();
             this.eleMail = book.getMember().getEMail();
             this.content = book.getContent();
